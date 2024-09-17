@@ -32,4 +32,4 @@ Que haya peces nadando en las inmediaciones y eventualmente alguno que pueda cau
 
 Archivo Original:
 
-![Prueba_de_Desarrollo_Unity](Prueba_de_Desarrollo_Unity.png)
+![Prueba_de_Desarrollo_Unity](Prueba_de_Desarrollo_Unity.jpg)
