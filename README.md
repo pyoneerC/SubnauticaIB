@@ -33,3 +33,25 @@ Que haya peces nadando en las inmediaciones y eventualmente alguno que pueda cau
 Archivo Original:
 
 ![Prueba_de_Desarrollo_Unity](Prueba_de_Desarrollo_Unity.jpg)
+
+## Entrega: 15/10/2024
+
+### Aclaraciones:
+
+- ¿Qué debe pasar al completar la simulación (arreglar las fisuras)? ¿Debería haber un "Game Over" y cerrar el juego por código?
+
+`Puedes mostrar una pantalla de resultados que indique cuánto tiempo se tomó para completar la tarea, si se utilizaron los elementos correctos o incorrectos, y cuántas veces el jugador se quedó sin oxígeno. La simulación también podría terminar por muerte a causa de la falta de oxígeno.`
+
+- ¿Qué debería ocurrir cuando el jugador se queda sin oxígeno? ¿Debería empezar de nuevo?
+
+`El jugador debería morir y terminar la simulación.`
+
+- ¿La soldadora tiene algún tipo de batería o es necesario cargarla?
+
+`No, no utilizan baterías. Son equipos que sueldan con gas y alambre bajo el agua, por lo que el jugador debería colocarse una especie de mochila.`
+
+- ¿Es obligatorio ponerse todo el equipo antes de sumergirse? ¿O puede saltar sin las patas de rana y moverse más lento? ¿Y si no lleva las antiparras, debería ver más borroso?
+
+`Es obligatorio utilizar todo el equipo, ya que de lo contrario no cumpliría con las normas de seguridad del trabajo.`
+
+> EPP es elementos de protección personal.
