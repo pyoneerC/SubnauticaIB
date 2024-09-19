@@ -40,9 +40,9 @@ Archivo Original:
 
 - ¿Qué debe pasar al completar la simulación (arreglar las fisuras)? ¿Debería haber un "Game Over" y cerrar el juego por código?
 
-`Puedes mostrar una pantalla de resultados que indique cuánto tiempo se tomó para completar la tarea, si se utilizaron los elementos correctos o incorrectos, y cuántas veces el jugador se quedó sin oxígeno. La simulación también podría terminar por muerte a causa de la falta de oxígeno.`
+`Puedes mostrar una pantalla de resultados que indique cuánto tiempo se tomó para completar la tarea, si se utilizaron los elementos correctos o incorrectos, y cuántas veces el jugador se quedó sin oxígeno.`
 
-- ¿Qué debería ocurrir cuando el jugador se queda sin oxígeno? ¿Debería empezar de nuevo?
+- ¿Qué debería ocurrir cuando el jugador es abatido por criaturas marinas o se queda sin oxígeno? ¿Debería empezar de nuevo?
 
 `El jugador debería morir y terminar la simulación.`
 
