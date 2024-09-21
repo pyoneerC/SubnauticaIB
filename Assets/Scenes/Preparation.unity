@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 484793415}
   m_Layer: 0
   m_Name: Cuchillo
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 531898269}
   m_Layer: 0
   m_Name: "Pesas de inmersi\xF3n"
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 747641349}
   m_Layer: 0
   m_Name: Respirador
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 1100824443}
   m_Layer: 0
   m_Name: Patas de rana
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2150,7 +2150,7 @@ GameObject:
   - component: {fileID: 1568930777}
   m_Layer: 0
   m_Name: "Tanque de ox\xEDgeno"
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2256,7 +2256,7 @@ GameObject:
   - component: {fileID: 1622736578}
   m_Layer: 0
   m_Name: Antiparras
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2362,7 +2362,7 @@ GameObject:
   - component: {fileID: 1636340594}
   m_Layer: 0
   m_Name: "Carga de tanque de ox\xEDgeno"
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2468,7 +2468,7 @@ GameObject:
   - component: {fileID: 1735495815}
   m_Layer: 0
   m_Name: Traje de neopreno
-  m_TagString: Untagged
+  m_TagString: elementos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
