@@ -7,6 +7,7 @@ public class WaterLogic : MonoBehaviour
     [FormerlySerializedAs("max_oxygen")] public int maxOxygen = 45;
     [FormerlySerializedAs("current_oxygen")] public int currentOxygen;
     private Coroutine _oxygenDecrementCoroutine;
+    private Coroutine _restoreOxygenCoroutine;
     private float _previousWaitTime;
 
     private void Start()
@@ -18,6 +19,14 @@ public class WaterLogic : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Sea")) return;
+
+        Debug.Log("Player has entered the water volume!");
+
+        if (_restoreOxygenCoroutine != null)
+        {
+            StopCoroutine(_restoreOxygenCoroutine);
+            _restoreOxygenCoroutine = null;
+        }
 
         currentOxygen = maxOxygen;
 
@@ -33,14 +42,15 @@ public class WaterLogic : MonoBehaviour
     {
         if (!other.CompareTag("Sea")) return;
 
+        Debug.Log("Player has exited the water volume!");
+
         if (_oxygenDecrementCoroutine != null)
         {
             StopCoroutine(_oxygenDecrementCoroutine);
             _oxygenDecrementCoroutine = null;
         }
 
-        currentOxygen = maxOxygen;
-        Debug.Log(currentOxygen);
+        _restoreOxygenCoroutine ??= StartCoroutine(RestoreOxygen());
     }
 
     private IEnumerator OxygenDecrement()
@@ -74,8 +84,30 @@ public class WaterLogic : MonoBehaviour
             if (currentOxygen <= 0)
             {
                 Debug.Log("Oxygen has depleted!");
+                // Handle death or other consequences here
             }
         }
+    }
+
+    private IEnumerator RestoreOxygen()
+    {
+        const float lerpDuration = 5f;
+        var timeElapsed = 0f;
+        var startOxygen = currentOxygen;
+
+        Debug.Log("Starting oxygen restoration...");
+
+        while (timeElapsed < lerpDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            currentOxygen = (int)Mathf.Lerp(startOxygen, maxOxygen, timeElapsed / lerpDuration);
+            Debug.Log("Restoring oxygen: " + currentOxygen);
+            yield return null;
+        }
+
+        currentOxygen = maxOxygen;
+        Debug.Log("Oxygen fully restored: " + currentOxygen);
+        _restoreOxygenCoroutine = null;
     }
 
     private float GetWaitTime()
