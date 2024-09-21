@@ -53,7 +53,17 @@ public class FixLogic : MonoBehaviour
             Destroy(_currentLeak);
         }
 
+        if (fixedCount >= 7)
+        {
+            GameOver();
+        }
+
         _isOverlapping = false;
         _isFixing = false;
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over! You fixed 7 leaks.");
     }
 }
