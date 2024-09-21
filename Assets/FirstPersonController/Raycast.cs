@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Raycast : MonoBehaviour
 {
     public Camera mainCamera;
-    public float rayDistance = 50f;
-    public int itemCount = 0;
+    public float rayDistance = 3f;
+    public int itemCount;
+    public int goalCount = 8;
 
-    void Update()
+    private void Update()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        var ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
         if (!Physics.Raycast(ray, out hit, rayDistance)) return;
@@ -22,9 +24,8 @@ public class Raycast : MonoBehaviour
         Destroy(hit.collider.gameObject);
         Debug.Log("¡Contador de ítems: " + itemCount);
 
-        if (itemCount == 8)
-        {
-            Debug.Log("READY!");
-        }
+        if (itemCount != goalCount) return;
+        Debug.Log("READY!");
+        SceneManager.LoadScene("Reparation");
     }
 }
