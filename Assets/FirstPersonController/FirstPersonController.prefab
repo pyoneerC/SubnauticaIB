@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 4459864850019384740}
   - component: {fileID: 6724316082960878885}
+  - component: {fileID: 1285577524151521393}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -209,6 +210,19 @@ MonoBehaviour:
   mainCamera: {fileID: 4459864851310106426}
   rayDistance: 50
   itemCount: 0
+  goalCount: 8
+--- !u!114 &1285577524151521393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036779abe90c6f64abbb2bd320e93b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0

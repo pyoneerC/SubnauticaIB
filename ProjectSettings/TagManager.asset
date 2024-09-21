@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - elementos
+  - Sea
   layers:
   - Default
   - TransparentFX
