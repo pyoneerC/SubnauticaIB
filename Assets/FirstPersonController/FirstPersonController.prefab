@@ -179,7 +179,7 @@ MonoBehaviour:
   sprintFOVStepTime: 10
   useSprintBar: 1
   hideBarWhenFull: 1
-  sprintBarBG: {fileID: 4459864851397454648}
+  sprintBarBg: {fileID: 4459864851397454648}
   sprintBar: {fileID: 4459864850888339820}
   sprintBarWidthPercent: 0.3
   sprintBarHeightPercent: 0.02
@@ -223,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036779abe90c6f64abbb2bd320e93b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxOxygen: 45
+  currentOxygen: 0
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0
