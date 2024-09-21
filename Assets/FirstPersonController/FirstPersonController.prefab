@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4459864850019384740}
   - component: {fileID: 6724316082960878885}
   - component: {fileID: 1285577524151521393}
+  - component: {fileID: 4614605577419265582}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -225,6 +226,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOxygen: 45
   currentOxygen: 0
+--- !u!114 &4614605577419265582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d21261262dd264ba18cc7479fe6b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedCount: 0
 --- !u!1 &4459864850190357393
 GameObject:
   m_ObjectHideFlags: 0
