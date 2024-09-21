@@ -1116,6 +1116,7 @@ GameObject:
   - component: {fileID: 484793417}
   - component: {fileID: 484793416}
   - component: {fileID: 484793415}
+  - component: {fileID: 484793419}
   m_Layer: 0
   m_Name: Cuchillo
   m_TagString: elementos
@@ -1211,6 +1212,18 @@ Transform:
   - {fileID: 85427238}
   m_Father: {fileID: 1815621688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &484793419
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484793414}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 5
 --- !u!1 &531898268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3189,7 @@ GameObject:
   - component: {fileID: 1622736580}
   - component: {fileID: 1622736579}
   - component: {fileID: 1622736578}
+  - component: {fileID: 1622736582}
   m_Layer: 0
   m_Name: Antiparras
   m_TagString: elementos
@@ -3271,6 +3285,18 @@ Transform:
   - {fileID: 887996240}
   m_Father: {fileID: 1815621688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!122 &1622736582
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622736577}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 5
 --- !u!1 &1636340593
 GameObject:
   m_ObjectHideFlags: 0
