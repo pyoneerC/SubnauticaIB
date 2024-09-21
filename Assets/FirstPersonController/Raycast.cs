@@ -22,7 +22,7 @@ public class Raycast : MonoBehaviour
         if (!hit.collider.CompareTag("elementos")) return;
         itemCount++;
         Destroy(hit.collider.gameObject);
-        Debug.Log("¡Contador de ítems: " + itemCount);
+        Debug.Log("Contador de ítems: " + itemCount);
 
         if (itemCount != goalCount) return;
         Debug.Log("READY!");
