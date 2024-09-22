@@ -6,9 +6,15 @@ public class WaterLogic : MonoBehaviour
 {
     [FormerlySerializedAs("max_oxygen")] public int maxOxygen = 45;
     [FormerlySerializedAs("current_oxygen")] public int currentOxygen;
+
+    public Rigidbody playerRigidbody;
+    public float waterGravityScale = 0.5f;
+    public float swimSpeed = 5f;
+
     private Coroutine _oxygenDecrementCoroutine;
     private Coroutine _restoreOxygenCoroutine;
     private float _previousWaitTime;
+    private bool _isUnderwater;
 
     private void Start()
     {
@@ -16,11 +22,21 @@ public class WaterLogic : MonoBehaviour
         _previousWaitTime = GetWaitTime();
     }
 
+    private void Update()
+    {
+        if (_isUnderwater)
+        {
+            HandleUnderwaterMovement();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Sea")) return;
 
         Debug.Log("Player has entered the water volume!");
+
+        EnterWater();
 
         if (_restoreOxygenCoroutine != null)
         {
@@ -43,6 +59,8 @@ public class WaterLogic : MonoBehaviour
         if (!other.CompareTag("Sea")) return;
 
         Debug.Log("Player has exited the water volume!");
+
+        ExitWater();
 
         if (_oxygenDecrementCoroutine != null)
         {
@@ -84,7 +102,6 @@ public class WaterLogic : MonoBehaviour
             if (currentOxygen <= 0)
             {
                 Debug.Log("Oxygen has depleted!");
-                // Handle death or other consequences here
             }
         }
     }
@@ -108,6 +125,29 @@ public class WaterLogic : MonoBehaviour
         currentOxygen = maxOxygen;
         Debug.Log("Oxygen fully restored: " + currentOxygen);
         _restoreOxygenCoroutine = null;
+    }
+
+    private void EnterWater()
+    {
+        _isUnderwater = true;
+        Physics.gravity *= waterGravityScale;
+        playerRigidbody.drag = 3f;
+        Debug.Log("Underwater effects enabled.");
+    }
+
+    private void ExitWater()
+    {
+        _isUnderwater = false;
+        Physics.gravity /= waterGravityScale;
+        playerRigidbody.drag = 0f;
+        Debug.Log("Underwater effects disabled.");
+    }
+
+    private void HandleUnderwaterMovement()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 swimDirection = transform.up * verticalInput;
+        playerRigidbody.AddForce(swimDirection * (swimSpeed * 0.2f), ForceMode.Acceleration);
     }
 
     private float GetWaitTime()
