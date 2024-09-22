@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1285577524151521393}
   - component: {fileID: 4614605577419265582}
   - component: {fileID: 3305085004668898818}
+  - component: {fileID: 2327224661414693905}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -169,10 +170,10 @@ MonoBehaviour:
   zoomFOV: 30
   zoomStepTime: 5
   playerCanMove: 1
-  walkSpeed: 5
+  walkSpeed: 3
   maxVelocityChange: 10
   enableSprint: 1
-  unlimitedSprint: 1
+  unlimitedSprint: 0
   sprintKey: 304
   sprintSpeed: 7
   sprintDuration: 5
@@ -185,10 +186,10 @@ MonoBehaviour:
   sprintBar: {fileID: 4459864850888339820}
   sprintBarWidthPercent: 0.3
   sprintBarHeightPercent: 0.02
-  enableJump: 1
+  enableJump: 0
   jumpKey: 32
   jumpPower: 5
-  enableCrouch: 1
+  enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
   crouchHeight: 0.75
@@ -253,6 +254,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a90a6ab6ecbbe29499decd06fe949967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLogic: {fileID: 0}
+  ui: {fileID: 0}
+--- !u!114 &2327224661414693905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4be64985abb7794a8b9a07987d433eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4459864850190357393
