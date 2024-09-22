@@ -5,8 +5,10 @@ public class Sea : MonoBehaviour
 {
     public WaterLogic waterLogic;
     public GameObject ui;
+    public Health health;
 
     private TextMeshProUGUI _oxygenText;
+    private TextMeshProUGUI _healthText;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class Sea : MonoBehaviour
         }
 
         _oxygenText = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        _healthText = canvas.GetComponentsInChildren<TextMeshProUGUI>()[1];
 
         if (_oxygenText == null)
         {
@@ -49,6 +52,15 @@ public class Sea : MonoBehaviour
             <= 6 => Color.red,
             <= 15 => new Color(1f, 0.5f, 0f),
             <= 21 => Color.yellow,
+            _ => Color.green
+        };
+
+        _healthText.text = $"{health.health}";
+
+        _healthText.color = health.health switch
+        {
+            <= 35 => Color.red,
+            <= 70 => new Color(1f, 0.5f, 0f),
             _ => Color.green
         };
     }
