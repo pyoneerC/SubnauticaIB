@@ -221,11 +221,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4459864850019384750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036779abe90c6f64abbb2bd320e93b58, type: 3}
+  m_Script: {fileID: 11500000, guid: 322675ccdbe142745aef2b8b0dd4b0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxOxygen: 45
   currentOxygen: 0
+  playerRigidbody: {fileID: 4459864850019384741}
+  waterGravityScale: 0.5
+  swimSpeed: 5
 --- !u!114 &4614605577419265582
 MonoBehaviour:
   m_ObjectHideFlags: 0
