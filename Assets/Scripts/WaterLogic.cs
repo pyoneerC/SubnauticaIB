@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class WaterLogic : MonoBehaviour
     public AudioClip oxygenWarning2;
     public AudioClip oxygenWarning3;
     public Image blackFadeImage;
+    public TextMeshProUGUI oxygenWarningText;
 
     private AudioSource _audioSource;
     private Coroutine _oxygenDecrementCoroutine;
@@ -99,18 +101,24 @@ public class WaterLogic : MonoBehaviour
             switch (currentOxygen)
             {
                 case <= 6 when !_hasPlayedWarning3:
-                    Debug.Log("GET OXYGEN NOW, YOU'RE DYING!");
+                    oxygenWarningText.text = "¡AGARRÁ OXÍGENO YA, TE ESTÁS MURIENDO!";
+                    oxygenWarningText.color = Color.red;
+                    StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning3);
                     _hasPlayedWarning3 = true;
                     StartCoroutine(FadeInBlackCanvas());
                     break;
                 case <= 15 when !_hasPlayedWarning2:
-                    Debug.Log("Oxygen very low! Get oxygen immediately!");
+                    oxygenWarningText.text = "¡El oxígeno está por el piso! ¡Conseguí oxígeno ya!";
+                    oxygenWarningText.color = new Color(1f, 0.5f, 0f);
+                    StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning2);
                     _hasPlayedWarning2 = true;
                     break;
                 case <= 30 when !_hasPlayedWarning1:
-                    Debug.Log("Oxygen critical! Get some oxygen!");
+                    oxygenWarningText.text = "¡Oxígeno agotándose! ¡Conseguí un poco de oxígeno!";
+                    oxygenWarningText.color = Color.yellow;
+                    StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning1);
                     _hasPlayedWarning1 = true;
                     break;
@@ -125,6 +133,23 @@ public class WaterLogic : MonoBehaviour
             }
         }
     }
+
+    private static IEnumerator FadeTextAlpha(TextMeshProUGUI text, float startAlpha, float endAlpha, float duration)
+    {
+        var elapsedTime = 0f;
+        var color = text.color;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            var alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            text.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        text.color = new Color(color.r, color.g, color.b, endAlpha);
+    }
+
 
     private IEnumerator RestoreOxygen()
     {
