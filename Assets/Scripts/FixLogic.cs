@@ -23,6 +23,7 @@ public class FixLogic : MonoBehaviour
         if (!other.CompareTag("Leak")) return;
         _isOverlapping = false;
         _currentLeak = null;
+        audioSource.Stop();
         Debug.Log("Exited leak area.");
     }
 
@@ -46,6 +47,13 @@ public class FixLogic : MonoBehaviour
             yield return null;
         }
 
+        if (!_isOverlapping || _currentLeak == null)
+        {
+            Debug.Log("No longer overlapping with leak. Fix aborted.");
+            _isFixing = false;
+            yield break;
+        }
+
         fixedCount++;
         Debug.Log("Leak fixed! Total fixed leaks: " + fixedCount);
 
@@ -60,7 +68,7 @@ public class FixLogic : MonoBehaviour
                     Destroy(child.gameObject);
                 }
             }
-            
+
             Destroy(_currentLeak);
         }
 
@@ -73,7 +81,7 @@ public class FixLogic : MonoBehaviour
         _isFixing = false;
     }
 
-    private void GameOver()
+    private static void GameOver()
     {
         Debug.Log("Game Over! You fixed 7 leaks.");
     }
