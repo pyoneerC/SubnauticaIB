@@ -51,6 +51,16 @@ public class FixLogic : MonoBehaviour
 
         if (_currentLeak != null)
         {
+            GameObject parent = _currentLeak.transform.parent.gameObject;
+
+            foreach (Transform child in parent.transform)
+            {
+                if (child != _currentLeak.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            
             Destroy(_currentLeak);
         }
 
