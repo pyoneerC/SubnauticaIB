@@ -4349,7 +4349,11 @@ PrefabInstance:
       propertyPath: rayDistance
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+    - {fileID: 4614605577419265582, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+    - {fileID: 3305085004668898818, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+    - {fileID: 2327224661414693905, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
