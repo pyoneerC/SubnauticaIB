@@ -9,6 +9,14 @@ TagManager:
   - Leak
   - Chelicerate
   - Kit
+  - oxygenTank
+  - body
+  - goggles
+  - feet
+  - weight
+  - oxygenTankCharge
+  - breather
+  - knife
   layers:
   - Default
   - TransparentFX

@@ -695,6 +695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: scuba_goggles_and_snorkel
       objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: 38ce9918939f80843a2531ce0061691d, type: 3}
+      propertyPath: m_TagString
+      value: goggles
+      objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 38ce9918939f80843a2531ce0061691d, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -778,7 +782,7 @@ GameObject:
   - component: {fileID: 90427957}
   - component: {fileID: 90427956}
   m_Layer: 0
-  m_Name: FeetR
+  m_Name: FeetL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2421,7 +2425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
+  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4170,7 +4174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
+  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4939,6 +4943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wetsuit
       objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: f9346ec1c47cfde4ca92420e8e23eb82, type: 3}
+      propertyPath: m_TagString
+      value: body
+      objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: f9346ec1c47cfde4ca92420e8e23eb82, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5005,6 +5013,10 @@ PrefabInstance:
     - target: {fileID: -5609321221556402741, guid: 3d4a18cd1b824194d88111e9ab8fa122, type: 3}
       propertyPath: m_Name
       value: utility_knife
+      objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: 3d4a18cd1b824194d88111e9ab8fa122, type: 3}
+      propertyPath: m_TagString
+      value: knife
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 3d4a18cd1b824194d88111e9ab8fa122, type: 3}
       propertyPath: m_LocalScale.x
@@ -5330,9 +5342,69 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1458228973}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 213717843}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: legL
+      value: 
+      objectReference: {fileID: 64918167}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: legR
+      value: 
+      objectReference: {fileID: 22388702}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: feetL
+      value: 
+      objectReference: {fileID: 472777021}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: feetR
+      value: 
+      objectReference: {fileID: 90427956}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: knifeUp
+      value: 
+      objectReference: {fileID: 1401687115}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: weightL
+      value: 
+      objectReference: {fileID: 428812745}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: weightR
+      value: 
+      objectReference: {fileID: 1993754776}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: breather
+      value: 
+      objectReference: {fileID: 768781764}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: oxygenTank
+      value: 
+      objectReference: {fileID: 631903965}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: gogglesLeft
+      value: 
+      objectReference: {fileID: 182934934}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: rayDistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: gogglesRight
+      value: 
+      objectReference: {fileID: 211642282}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: equipmentCount
+      value: 
+      objectReference: {fileID: 936678402}
+    - target: {fileID: 6724316082960878885, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: oxygenTankCharge
+      value: 
+      objectReference: {fileID: 146618611}
     m_RemovedComponents:
     - {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
     - {fileID: 4614605577419265582, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -5369,6 +5441,9 @@ PrefabInstance:
       addedObject: {fileID: 472777020}
     - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 90427955}
+    - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1919588077}
     - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
@@ -5388,9 +5463,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 428812744}
-    - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 90427955}
     - targetCorrespondingSourceObject: {fileID: 4459864851551516607, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 22388701}
@@ -5937,7 +6009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446.99997, y: 208}
+  m_AnchoredPosition: {x: 445.5, y: 208}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &936678402
@@ -5971,8 +6043,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6247,6 +6319,10 @@ PrefabInstance:
     - target: {fileID: -5609321221556402741, guid: 3e2f404f33a296a45a1ddecb0d2b9404, type: 3}
       propertyPath: m_Name
       value: flipper_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: 3e2f404f33a296a45a1ddecb0d2b9404, type: 3}
+      propertyPath: m_TagString
+      value: feet
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 3e2f404f33a296a45a1ddecb0d2b9404, type: 3}
       propertyPath: m_LocalScale.x
@@ -7206,6 +7282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: respirator_282_bake
       objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: bba6730b0e5f81448b9319cc916613b3, type: 3}
+      propertyPath: m_TagString
+      value: breather
+      objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: bba6730b0e5f81448b9319cc916613b3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.002
@@ -7697,6 +7777,10 @@ PrefabInstance:
     - target: {fileID: -5609321221556402741, guid: 21bca9556154d7c488b86e8802f0b2c7, type: 3}
       propertyPath: m_Name
       value: gym_weights_-_game_asset
+      objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: 21bca9556154d7c488b86e8802f0b2c7, type: 3}
+      propertyPath: m_TagString
+      value: weight
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 21bca9556154d7c488b86e8802f0b2c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -9062,7 +9146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 1}
+  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9137,7 +9221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9230,6 +9314,10 @@ PrefabInstance:
     - target: {fileID: -5609321221556402741, guid: 81cbcba4a3466e740ba6000a37d4d4b4, type: 3}
       propertyPath: m_Name
       value: oxygen_tank
+      objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: 81cbcba4a3466e740ba6000a37d4d4b4, type: 3}
+      propertyPath: m_TagString
+      value: oxygenTank
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 81cbcba4a3466e740ba6000a37d4d4b4, type: 3}
       propertyPath: m_LocalScale.x
@@ -10180,6 +10268,10 @@ PrefabInstance:
     - target: {fileID: -5609321221556402741, guid: d0c8a7ba71a837d47a972faf58eb4732, type: 3}
       propertyPath: m_Name
       value: simple_oxygen_tank
+      objectReference: {fileID: 0}
+    - target: {fileID: -5609321221556402741, guid: d0c8a7ba71a837d47a972faf58eb4732, type: 3}
+      propertyPath: m_TagString
+      value: oxygenTankCharge
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: d0c8a7ba71a837d47a972faf58eb4732, type: 3}
       propertyPath: m_LocalScale.x
