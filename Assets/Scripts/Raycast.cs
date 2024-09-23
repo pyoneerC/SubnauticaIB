@@ -47,9 +47,8 @@ public class Raycast : MonoBehaviour
     private IEnumerator TryPickUpItem()
     {
         var ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
 
-        if (!Physics.Raycast(ray, out hit, rayDistance) || !hit.collider.CompareTag("elementos")) yield break;
+        if (!Physics.Raycast(ray, out var hit, rayDistance) || !hit.collider.CompareTag("elementos")) yield break;
         var halo = hit.collider.GetComponent("Halo");
 
         if (!halo)

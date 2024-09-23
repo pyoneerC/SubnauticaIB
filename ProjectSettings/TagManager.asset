@@ -17,6 +17,7 @@ TagManager:
   - oxygenTankCharge
   - breather
   - knife
+  - welder
   layers:
   - Default
   - TransparentFX
