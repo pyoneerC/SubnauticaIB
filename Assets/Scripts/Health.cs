@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public float health = 100f;
     public List<int> damageValues = new();
     private int _currentDamageIndex;
+    public AudioSource audioSource;
+    public AudioClip healSound;
 
     public Text healthText;
 
@@ -29,6 +31,7 @@ public class Health : MonoBehaviour
 
         if (!other.CompareTag("Kit") || !(health < 100f)) return;
         StartCoroutine(Heal(5f));
+        audioSource.PlayOneShot(healSound);
         Destroy(other.gameObject);
     }
 
