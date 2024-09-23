@@ -51,7 +51,7 @@ public class Sea : MonoBehaviour
         {
             <= 6 => Color.red,
             <= 15 => new Color(1f, 0.5f, 0f),
-            <= 21 => Color.yellow,
+            <= 30 => Color.yellow,
             _ => Color.green
         };
 
@@ -59,8 +59,9 @@ public class Sea : MonoBehaviour
 
         _healthText.color = health.health switch
         {
-            <= 35 => Color.red,
-            <= 70 => new Color(1f, 0.5f, 0f),
+            <= 1 => Color.red,
+            <= 20 => new Color(1f, 0.5f, 0f),
+            <= 50 => Color.yellow,
             _ => Color.green
         };
     }

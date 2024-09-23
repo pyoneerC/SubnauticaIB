@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class WaterLogic : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class WaterLogic : MonoBehaviour
     public AudioClip oxygenWarning1;
     public AudioClip oxygenWarning2;
     public AudioClip oxygenWarning3;
+    public Image blackFadeImage;
 
     private AudioSource _audioSource;
     private Coroutine _oxygenDecrementCoroutine;
     private Coroutine _restoreOxygenCoroutine;
     private float _previousWaitTime;
     private bool _isUnderwater;
+    private bool _isFadingIn;
 
     private bool _hasPlayedWarning1;
     private bool _hasPlayedWarning2;
@@ -32,6 +35,7 @@ public class WaterLogic : MonoBehaviour
         currentOxygen = maxOxygen;
         _previousWaitTime = GetWaitTime();
         _audioSource = GetComponent<AudioSource>();
+        blackFadeImage.color = new Color(0f, 0f, 0f, 0f);
 
         _audioSource.volume = 1.0f;
     }
@@ -98,13 +102,14 @@ public class WaterLogic : MonoBehaviour
                     Debug.Log("GET OXYGEN NOW, YOU'RE DYING!");
                     _audioSource.PlayOneShot(oxygenWarning3);
                     _hasPlayedWarning3 = true;
+                    StartCoroutine(FadeInBlackCanvas());
                     break;
                 case <= 15 when !_hasPlayedWarning2:
                     Debug.Log("Oxygen very low! Get oxygen immediately!");
                     _audioSource.PlayOneShot(oxygenWarning2);
                     _hasPlayedWarning2 = true;
                     break;
-                case <= 21 when !_hasPlayedWarning1:
+                case <= 30 when !_hasPlayedWarning1:
                     Debug.Log("Oxygen critical! Get some oxygen!");
                     _audioSource.PlayOneShot(oxygenWarning1);
                     _hasPlayedWarning1 = true;
@@ -116,7 +121,7 @@ public class WaterLogic : MonoBehaviour
 
             if (currentOxygen <= 0)
             {
-
+                _audioSource.Stop();
             }
         }
     }
@@ -140,6 +145,24 @@ public class WaterLogic : MonoBehaviour
         _hasPlayedWarning1 = false;
         _hasPlayedWarning2 = false;
         _hasPlayedWarning3 = false;
+    }
+
+    private IEnumerator FadeInBlackCanvas()
+    {
+        _isFadingIn = true;
+        const float duration = 6f;
+        var timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            var alpha = Mathf.Clamp01(timeElapsed / duration);
+            blackFadeImage.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+
+        blackFadeImage.color = new Color(0, 0, 0, 1);
+        _isFadingIn = false;
     }
 
     private void EnterWater()
@@ -180,7 +203,7 @@ public class WaterLogic : MonoBehaviour
     {
         return currentOxygen switch
         {
-            > 21 => 1.5f,
+            > 30 => 1.5f,
             > 15 => 2.5f,
             > 6 => 3f,
             _ => 3f
