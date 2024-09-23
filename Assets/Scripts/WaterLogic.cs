@@ -38,7 +38,6 @@ public class WaterLogic : MonoBehaviour
         _previousWaitTime = GetWaitTime();
         _audioSource = GetComponent<AudioSource>();
         blackFadeImage.color = new Color(0f, 0f, 0f, 0f);
-
         _audioSource.volume = 1.0f;
     }
 
@@ -98,6 +97,8 @@ public class WaterLogic : MonoBehaviour
                 _previousWaitTime = currentWaitTime;
             }
 
+            UpdateBreathingPitch();
+
             switch (currentOxygen)
             {
                 case <= 6 when !_hasPlayedWarning3:
@@ -134,6 +135,12 @@ public class WaterLogic : MonoBehaviour
         }
     }
 
+    private void UpdateBreathingPitch()
+    {
+        float normalizedOxygen = (float)currentOxygen / maxOxygen;
+        _audioSource.pitch = Mathf.Lerp(0.5f, 1.5f, normalizedOxygen);
+    }
+
     private static IEnumerator FadeTextAlpha(TextMeshProUGUI text, float startAlpha, float endAlpha, float duration)
     {
         var elapsedTime = 0f;
@@ -149,7 +156,6 @@ public class WaterLogic : MonoBehaviour
 
         text.color = new Color(color.r, color.g, color.b, endAlpha);
     }
-
 
     private IEnumerator RestoreOxygen()
     {
@@ -201,7 +207,7 @@ public class WaterLogic : MonoBehaviour
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
-            var alpha = Mathf.Clamp01(1 - (timeElapsed / duration)); // Fade out
+            var alpha = Mathf.Clamp01(1 - (timeElapsed / duration));
             blackFadeImage.color = new Color(0, 0, 0, alpha);
             yield return null;
         }
@@ -209,7 +215,6 @@ public class WaterLogic : MonoBehaviour
         blackFadeImage.color = new Color(0, 0, 0, 0);
         _isFadingIn = false;
     }
-
 
     private void EnterWater()
     {
