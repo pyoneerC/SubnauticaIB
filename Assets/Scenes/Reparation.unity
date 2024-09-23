@@ -11760,7 +11760,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 718ebe77f2495b344b89edd7da814d2e, type: 3}
     - target: {fileID: 2327224661414693905, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: health
-      value: 7
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3305085004668898818, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: UI
