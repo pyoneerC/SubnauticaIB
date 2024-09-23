@@ -1,0 +1,44 @@
+﻿name: Build Unity Project
+
+on:
+  #push:
+    #branches:
+      #- main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Discard uncommitted changes
+        run: |
+          git reset --hard
+          git clean -fd
+
+      - name: Install Butler
+        run: |
+          curl -LO https://itch.io/butler/installation/linux/butler
+          chmod +x butler
+          sudo mv butler /usr/local/bin/
+
+      - name: Set up Unity
+        uses: game-ci/unity-builder@v2
+        with:
+          unityVersion: 2022.3.27f1
+          targetPlatform: StandaloneWindows64
+          UNITY_LICENSE: ${{ secrets.UNITY_SERIAL }}
+
+      - name: Build Unity Project
+        run: |
+          unity-builder --projectPath . --buildTarget StandaloneWindows64 --buildName MyGameBuild --outputPath ./build
+
+      - name: Zip Build Output
+        run: |
+          zip -r subnauticaib.zip ./build/*  # Use zip command for Linux
+
+      - name: Upload to Butler
+        run: |
+          butler push subnauticaib.zip pyoneerc1/subnauticaib:latest --credentials ${{ secrets.BUTLER_CREDENTIALS }}
