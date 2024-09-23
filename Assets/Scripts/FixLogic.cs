@@ -4,6 +4,8 @@ using UnityEngine;
 public class FixLogic : MonoBehaviour
 {
     public int fixedCount;
+    public AudioSource audioSource;
+    public AudioClip weldingSound;
     private bool _isOverlapping;
     private GameObject _currentLeak;
     private bool _isFixing;
@@ -26,10 +28,9 @@ public class FixLogic : MonoBehaviour
 
     private void Update()
     {
-        if (_isOverlapping && Input.GetKey(KeyCode.F) && !_isFixing)
-        {
-            StartCoroutine(FixLeak());
-        }
+        if (!_isOverlapping || !Input.GetKey(KeyCode.F) || _isFixing) return;
+        StartCoroutine(FixLeak());
+        audioSource.PlayOneShot(weldingSound);
     }
 
     private IEnumerator FixLeak()
