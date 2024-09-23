@@ -190,6 +190,27 @@ public class WaterLogic : MonoBehaviour
         _isFadingIn = false;
     }
 
+    private IEnumerator FadeOutBlackCanvas()
+    {
+        _isFadingIn = true;
+        const float duration = 6f;
+        var timeElapsed = 0f;
+
+        blackFadeImage.color = new Color(0, 0, 0, 1);
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            var alpha = Mathf.Clamp01(1 - (timeElapsed / duration)); // Fade out
+            blackFadeImage.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+
+        blackFadeImage.color = new Color(0, 0, 0, 0);
+        _isFadingIn = false;
+    }
+
+
     private void EnterWater()
     {
         _isUnderwater = true;
@@ -213,6 +234,8 @@ public class WaterLogic : MonoBehaviour
 
         _audioSource.loop = false;
         _audioSource.Stop();
+
+        StartCoroutine(FadeOutBlackCanvas());
     }
 
     private void HandleUnderwaterMovement()
