@@ -10531,6 +10531,10 @@ PrefabInstance:
       propertyPath: underwaterVolume
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: verticalSwimSpeed
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3305085004668898818, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: UI
       value: 

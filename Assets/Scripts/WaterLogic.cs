@@ -10,6 +10,7 @@ public class WaterLogic : MonoBehaviour
     public Rigidbody playerRigidbody;
     public float waterGravityScale = 0.5f;
     public float swimSpeed = 5f;
+    public float verticalSwimSpeed = 2f;
 
     private Coroutine _oxygenDecrementCoroutine;
     private Coroutine _restoreOxygenCoroutine;
@@ -97,7 +98,6 @@ public class WaterLogic : MonoBehaviour
 
             yield return new WaitForSeconds(currentWaitTime);
             currentOxygen -= 3;
-            Debug.Log("Current oxygen: " + currentOxygen);
 
             if (currentOxygen <= 0)
             {
@@ -112,18 +112,14 @@ public class WaterLogic : MonoBehaviour
         var timeElapsed = 0f;
         var startOxygen = currentOxygen;
 
-        Debug.Log("Starting oxygen restoration...");
-
         while (timeElapsed < lerpDuration)
         {
             timeElapsed += Time.deltaTime;
             currentOxygen = (int)Mathf.Lerp(startOxygen, maxOxygen, timeElapsed / lerpDuration);
-            Debug.Log("Restoring oxygen: " + currentOxygen);
             yield return null;
         }
 
         currentOxygen = maxOxygen;
-        Debug.Log("Oxygen fully restored: " + currentOxygen);
         _restoreOxygenCoroutine = null;
     }
 
@@ -132,7 +128,6 @@ public class WaterLogic : MonoBehaviour
         _isUnderwater = true;
         Physics.gravity *= waterGravityScale;
         playerRigidbody.drag = 3f;
-        Debug.Log("Underwater effects enabled.");
     }
 
     private void ExitWater()
@@ -140,14 +135,15 @@ public class WaterLogic : MonoBehaviour
         _isUnderwater = false;
         Physics.gravity /= waterGravityScale;
         playerRigidbody.drag = 0f;
-        Debug.Log("Underwater effects disabled.");
     }
 
     private void HandleUnderwaterMovement()
     {
         var verticalInput = Input.GetAxis("Vertical");
-        var swimDirection = transform.up * verticalInput;
-        playerRigidbody.AddForce(swimDirection * (swimSpeed * 0.2f), ForceMode.Acceleration);
+        var ascendInput = Input.GetKey(KeyCode.E) ? 1f : (Input.GetKey(KeyCode.Q) ? -1f : 0f);
+
+        var swimDirection = transform.forward * verticalInput + transform.up * (ascendInput * verticalSwimSpeed);
+        playerRigidbody.AddForce(swimDirection * swimSpeed, ForceMode.Acceleration);
     }
 
     private float GetWaitTime()
