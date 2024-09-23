@@ -11,16 +11,29 @@ public class WaterLogic : MonoBehaviour
     public float waterGravityScale = 0.5f;
     public float swimSpeed = 5f;
     public float verticalSwimSpeed = 2f;
+    public AudioClip underwaterAmbience;
+    public AudioClip underwaterBreathing;
+    public AudioClip oxygenWarning1;
+    public AudioClip oxygenWarning2;
+    public AudioClip oxygenWarning3;
 
+    private AudioSource _audioSource;
     private Coroutine _oxygenDecrementCoroutine;
     private Coroutine _restoreOxygenCoroutine;
     private float _previousWaitTime;
     private bool _isUnderwater;
 
+    private bool _hasPlayedWarning1;
+    private bool _hasPlayedWarning2;
+    private bool _hasPlayedWarning3;
+
     private void Start()
     {
         currentOxygen = maxOxygen;
         _previousWaitTime = GetWaitTime();
+        _audioSource = GetComponent<AudioSource>();
+
+        _audioSource.volume = 1.0f;
     }
 
     private void Update()
@@ -34,8 +47,6 @@ public class WaterLogic : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Sea")) return;
-
-        Debug.Log("Player has entered the water volume!");
 
         EnterWater();
 
@@ -58,8 +69,6 @@ public class WaterLogic : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Sea")) return;
-
-        Debug.Log("Player has exited the water volume!");
 
         ExitWater();
 
@@ -85,14 +94,20 @@ public class WaterLogic : MonoBehaviour
 
             switch (currentOxygen)
             {
-                case <= 6:
+                case <= 6 when !_hasPlayedWarning3:
                     Debug.Log("GET OXYGEN NOW, YOU'RE DYING!");
+                    _audioSource.PlayOneShot(oxygenWarning3);
+                    _hasPlayedWarning3 = true;
                     break;
-                case <= 15:
+                case <= 15 when !_hasPlayedWarning2:
                     Debug.Log("Oxygen very low! Get oxygen immediately!");
+                    _audioSource.PlayOneShot(oxygenWarning2);
+                    _hasPlayedWarning2 = true;
                     break;
-                case <= 21:
+                case <= 21 when !_hasPlayedWarning1:
                     Debug.Log("Oxygen critical! Get some oxygen!");
+                    _audioSource.PlayOneShot(oxygenWarning1);
+                    _hasPlayedWarning1 = true;
                     break;
             }
 
@@ -101,7 +116,7 @@ public class WaterLogic : MonoBehaviour
 
             if (currentOxygen <= 0)
             {
-                Debug.Log("Oxygen has depleted!");
+
             }
         }
     }
@@ -121,6 +136,10 @@ public class WaterLogic : MonoBehaviour
 
         currentOxygen = maxOxygen;
         _restoreOxygenCoroutine = null;
+
+        _hasPlayedWarning1 = false;
+        _hasPlayedWarning2 = false;
+        _hasPlayedWarning3 = false;
     }
 
     private void EnterWater()
@@ -128,6 +147,11 @@ public class WaterLogic : MonoBehaviour
         _isUnderwater = true;
         Physics.gravity *= waterGravityScale;
         playerRigidbody.drag = 3f;
+        _audioSource.PlayOneShot(underwaterAmbience);
+
+        _audioSource.clip = underwaterBreathing;
+        _audioSource.loop = true;
+        _audioSource.Play();
     }
 
     private void ExitWater()
@@ -135,6 +159,12 @@ public class WaterLogic : MonoBehaviour
         _isUnderwater = false;
         Physics.gravity /= waterGravityScale;
         playerRigidbody.drag = 0f;
+        _hasPlayedWarning1 = false;
+        _hasPlayedWarning2 = false;
+        _hasPlayedWarning3 = false;
+
+        _audioSource.loop = false;
+        _audioSource.Stop();
     }
 
     private void HandleUnderwaterMovement()
