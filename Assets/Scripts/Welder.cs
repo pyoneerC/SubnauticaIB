@@ -6,7 +6,7 @@ public class Welder : MonoBehaviour
     public float rayDistance = 3f;
     public Camera playerCamera;
 
-    private bool _welderInHand;
+    public bool welderInHand;
 
     private void Start()
     {
@@ -43,8 +43,8 @@ public class Welder : MonoBehaviour
 
         hit.collider.gameObject.SetActive(false);
 
-        if (_welderInHand) return;
+        if (welderInHand) return;
         welderPrefab.SetActive(true);
-        _welderInHand = true;
+        welderInHand = true;
     }
 }

@@ -13367,6 +13367,10 @@ PrefabInstance:
       value: FirstPersonController
       objectReference: {fileID: 0}
     - target: {fileID: 4614605577419265582, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: welder
+      value: 
+      objectReference: {fileID: 1128651451}
+    - target: {fileID: 4614605577419265582, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: fixSound
       value: 
       objectReference: {fileID: 8300000, guid: 943919089a11d73468a581b3d1940529, type: 3}
@@ -18616,6 +18620,7 @@ MonoBehaviour:
   welderPrefab: {fileID: 1071434719}
   rayDistance: 100
   playerCamera: {fileID: 0}
+  _welderInHand: 0
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}

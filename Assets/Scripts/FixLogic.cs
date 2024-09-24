@@ -7,6 +7,7 @@ public class FixLogic : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip weldingSound;
     public GameObject welderParticles;
+    public Welder welder;
 
     private bool _isOverlapping;
     private GameObject _currentLeak;
@@ -37,7 +38,14 @@ public class FixLogic : MonoBehaviour
 
     private void Update()
     {
+        if (welder != null && !welder.welderInHand)
+        {
+            Debug.Log("Welder not in hand. Cannot fix leaks.");
+            return;
+        }
+
         if (!_isOverlapping || !Input.GetKey(KeyCode.F) || _isFixing) return;
+
         StartCoroutine(FixLeak());
         audioSource.PlayOneShot(weldingSound);
         welderParticles.SetActive(true);
