@@ -11,6 +11,10 @@ public class Raycast : MonoBehaviour
     public int itemCount;
     public int goalCount = 8;
 
+    public AudioSource audioSource;
+    public AudioClip itemPickupSound;
+    public AudioClip suitUpSound;
+
     public Image head;
     public Image body;
     public Image oxygenTank;
@@ -79,32 +83,40 @@ public class Raycast : MonoBehaviour
             {
                 case "oxygenTank":
                     oxygenTank.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "body":
                     body.color = Color.green;
                     legL.color = Color.green;
                     legR.color = Color.green;
+                    audioSource.PlayOneShot(suitUpSound);
                     break;
                 case "goggles":
                     gogglesLeft.color = Color.green;
                     gogglesRight.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "feet":
                     feetL.color = Color.green;
                     feetR.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "weight":
                     weightL.color = Color.green;
                     weightR.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "oxygenTankCharge":
                     oxygenTankCharge.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "breather":
                     breather.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 case "knife":
                     knifeUp.color = Color.green;
+                    audioSource.PlayOneShot(itemPickupSound);
                     break;
                 default:
                     Debug.Log("No matching tag found.");
