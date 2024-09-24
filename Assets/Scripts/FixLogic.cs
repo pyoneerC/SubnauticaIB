@@ -6,9 +6,16 @@ public class FixLogic : MonoBehaviour
     public int fixedCount;
     public AudioSource audioSource;
     public AudioClip weldingSound;
+    public GameObject welderParticles;
+
     private bool _isOverlapping;
     private GameObject _currentLeak;
     private bool _isFixing;
+
+    private void Start()
+    {
+        welderParticles.SetActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +32,7 @@ public class FixLogic : MonoBehaviour
         _currentLeak = null;
         audioSource.Stop();
         Debug.Log("Exited leak area.");
+        welderParticles.SetActive(false);
     }
 
     private void Update()
@@ -32,6 +40,7 @@ public class FixLogic : MonoBehaviour
         if (!_isOverlapping || !Input.GetKey(KeyCode.F) || _isFixing) return;
         StartCoroutine(FixLeak());
         audioSource.PlayOneShot(weldingSound);
+        welderParticles.SetActive(true);
     }
 
     private IEnumerator FixLeak()
@@ -50,6 +59,7 @@ public class FixLogic : MonoBehaviour
         if (!_isOverlapping || _currentLeak == null)
         {
             Debug.Log("No longer overlapping with leak. Fix aborted.");
+            welderParticles.SetActive(false);
             _isFixing = false;
             yield break;
         }
