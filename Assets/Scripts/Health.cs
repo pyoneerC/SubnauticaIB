@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
 
     public Text healthText;
 
+    private Coroutine _damageOverTimeCoroutine;
+
     private void Start()
     {
         damageValues.Add(50);
@@ -27,12 +29,21 @@ public class Health : MonoBehaviour
         if (other.CompareTag("Chelicerate"))
         {
             TakeDamage();
+
+            _damageOverTimeCoroutine ??= StartCoroutine(DamageOverTime(3f, 0.5f));
         }
 
         if (!other.CompareTag("Kit") || !(health < 100f)) return;
         StartCoroutine(Heal(5f));
         audioSource.PlayOneShot(healSound);
         Destroy(other.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Chelicerate") || _damageOverTimeCoroutine == null) return;
+        StopCoroutine(_damageOverTimeCoroutine);
+        _damageOverTimeCoroutine = null;
     }
 
     private void TakeDamage()
@@ -58,6 +69,24 @@ public class Health : MonoBehaviour
         else
         {
             Debug.Log("No more damage values available.");
+        }
+    }
+
+    private IEnumerator DamageOverTime(float damageAmount, float interval)
+    {
+        while (true)
+        {
+            health -= damageAmount;
+            health = Mathf.Max(health, 0f);
+
+            if (health <= 0)
+            {
+                Die();
+                break;
+            }
+
+            UpdateHealthUI();
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -89,5 +118,6 @@ public class Health : MonoBehaviour
     private void Die()
     {
         // Handle death logic here
+        Debug.Log("Player died!");
     }
 }
