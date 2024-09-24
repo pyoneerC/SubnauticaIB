@@ -20,6 +20,7 @@ public class WaterLogic : MonoBehaviour
     public AudioClip oxygenWarning3;
     public Image blackFadeImage;
     public TextMeshProUGUI oxygenWarningText;
+    public AudioClip enterWaterSound;
 
     private AudioSource _audioSource;
     private Coroutine _oxygenDecrementCoroutine;
@@ -222,6 +223,7 @@ public class WaterLogic : MonoBehaviour
         Physics.gravity *= waterGravityScale;
         playerRigidbody.drag = 3f;
         _audioSource.PlayOneShot(underwaterAmbience);
+        _audioSource.PlayOneShot(enterWaterSound);
 
         _audioSource.clip = underwaterBreathing;
         _audioSource.loop = true;

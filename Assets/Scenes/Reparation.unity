@@ -13235,6 +13235,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7ed3c99bc63172e4180096d90f099246, type: 3}
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: enterWaterSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 335961129c6c5454a8de1c786544d148, type: 3}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: playerRigidbody
       value: 
       objectReference: {fileID: 74962743}
@@ -18620,7 +18624,7 @@ MonoBehaviour:
   welderPrefab: {fileID: 1071434719}
   rayDistance: 100
   playerCamera: {fileID: 0}
-  _welderInHand: 0
+  welderInHand: 0
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
