@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -740, y: -150}
+  m_AnchoredPosition: {x: -540, y: -150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15224276
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Veces con poco ox\xEDgeno:"
+  m_text: "Alertas de ox\xEDgeno:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16363,6 +16363,18 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: endGameText
+      value: 
+      objectReference: {fileID: 707323441}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: totalTimeText
+      value: 
+      objectReference: {fileID: 886493360}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: yourGradeText
+      value: 
+      objectReference: {fileID: 550523078}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: blackFadeImage
       value: 
       objectReference: {fileID: 561981530}
@@ -16407,9 +16419,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 107970652d9a8544cbd0adc05b48c8e5, type: 3}
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: distanceCoveredText
+      value: 
+      objectReference: {fileID: 16681213}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: underwaterBreathing
       value: 
       objectReference: {fileID: 8300000, guid: 718ebe77f2495b344b89edd7da814d2e, type: 3}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: totalTimePerPipeText
+      value: 
+      objectReference: {fileID: 2014754360}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: oxygenAlertsCountText
+      value: 
+      objectReference: {fileID: 15224276}
     - target: {fileID: 2327224661414693905, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: health
       value: 100
