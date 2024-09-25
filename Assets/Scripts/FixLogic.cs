@@ -13,14 +13,19 @@ public class FixLogic : MonoBehaviour
     // Minimap circles and particles
     public GameObject circle0;
     public GameObject particle0;
+    public GameObject fireworks0;
     public GameObject circle1;
     public GameObject particle1;
+    public GameObject fireworks1;
     public GameObject circle2;
     public GameObject particle2;
+    public GameObject fireworks2;
     public GameObject circle3;
     public GameObject particle3;
+    public GameObject fireworks3;
     public GameObject circle4;
     public GameObject particle4;
+    public GameObject fireworks4;
 
     private bool _isOverlapping;
     private GameObject _currentLeak;
@@ -29,6 +34,11 @@ public class FixLogic : MonoBehaviour
     private void Start()
     {
         welderParticles.SetActive(false);
+        fireworks0.SetActive(false);
+        fireworks1.SetActive(false);
+        fireworks2.SetActive(false);
+        fireworks3.SetActive(false);
+        fireworks4.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,12 +122,14 @@ public class FixLogic : MonoBehaviour
             {
                 circle0.SetActive(false);
                 particle0.SetActive(false);
+                fireworks0.SetActive(true);
             }
         }
         else if (hasWindZone)
         {
             circle1.SetActive(false);
             particle1.SetActive(false);
+            fireworks1.SetActive(true);
         }
         else if (hasProjector)
         {
@@ -125,17 +137,20 @@ public class FixLogic : MonoBehaviour
             {
                 circle2.SetActive(false);
                 particle2.SetActive(false);
+                fireworks2.SetActive(true);
             }
         }
         else if (hasLensFlare)
         {
             circle3.SetActive(false);
             particle3.SetActive(false);
+            fireworks3.SetActive(true);
         }
         else if (hasMask)
         {
             circle4.SetActive(false);
             particle4.SetActive(false);
+            fireworks4.SetActive(true);
         }
 
         var parent = _currentLeak.transform.parent.gameObject;
