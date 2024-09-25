@@ -19,6 +19,7 @@ public class WaterLogic : MonoBehaviour
     public AudioClip oxygenWarning2;
     public AudioClip oxygenWarning3;
     public Image blackFadeImage;
+    public Image minimap;
     public TextMeshProUGUI oxygenWarningText;
     public AudioClip enterWaterSound;
 
@@ -40,6 +41,7 @@ public class WaterLogic : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         blackFadeImage.color = new Color(0f, 0f, 0f, 0f);
         _audioSource.volume = 1.0f;
+        minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 1f);
     }
 
     private void Update()
@@ -190,10 +192,12 @@ public class WaterLogic : MonoBehaviour
             timeElapsed += Time.deltaTime;
             var alpha = Mathf.Clamp01(timeElapsed / duration);
             blackFadeImage.color = new Color(0, 0, 0, alpha);
+            minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 1 - alpha);
             yield return null;
         }
 
         blackFadeImage.color = new Color(0, 0, 0, 1);
+        minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 0);
         _isFadingIn = false;
     }
 
@@ -204,16 +208,19 @@ public class WaterLogic : MonoBehaviour
         var timeElapsed = 0f;
 
         blackFadeImage.color = new Color(0, 0, 0, 1);
+        minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 0);
 
         while (timeElapsed < duration)
         {
             timeElapsed += Time.deltaTime;
             var alpha = Mathf.Clamp01(1 - (timeElapsed / duration));
             blackFadeImage.color = new Color(0, 0, 0, alpha);
+            minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, alpha);
             yield return null;
         }
 
         blackFadeImage.color = new Color(0, 0, 0, 0);
+        minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 1);
         _isFadingIn = false;
     }
 

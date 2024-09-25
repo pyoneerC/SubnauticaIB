@@ -16056,6 +16056,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: minimap
+      value: 
+      objectReference: {fileID: 1521861653}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: maxOxygen
       value: 50
       objectReference: {fileID: 0}
