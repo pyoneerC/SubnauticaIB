@@ -1,61 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class Fish : MonoBehaviour
 {
-    public float swimSpeed = 2f;
-    public float changeDirectionInterval = 2f;
-    public float swimHeight = 0.5f;
-    public float swimFrequency = 1f;
-    public float randomWanderAmount = 0.5f;
+    public GameObject splineObject; // Reference to the GameObject that holds the SplineContainer
+    public float swimSpeed = 1f; // Speed along the spline
+    public float rotationSpeed = 2f; // Speed of rotation to face the spline direction
+    public bool loop = true; // Should the fish loop back to the start of the spline?
 
-    private Vector2 _direction;
-    private float _timer;
-    private float _initialY;
+    private float _progress; // Progress along the spline (0 to 1)
+    private SplineContainer _splineContainer;
+    private Spline _spline;
+    private Vector3 _previousPosition;
 
     private void Start()
     {
-        ChangeDirection();
-        _timer = changeDirectionInterval;
-        _initialY = transform.position.y;
+        // Check if splineObject is assigned, then get the SplineContainer component
+        if (splineObject != null)
+        {
+            _splineContainer = splineObject.GetComponent<SplineContainer>();
+            if (_splineContainer == null)
+            {
+                Debug.LogError("No SplineContainer found on the referenced GameObject.");
+                return;
+            }
+        }
+        else
+        {
+            Debug.LogError("No GameObject with a SplineContainer assigned to Fish.");
+            return;
+        }
+
+        // Get the spline from the container
+        _spline = _splineContainer.Spline;
+        _previousPosition = transform.position;
     }
 
     private void Update()
     {
-        transform.Translate(_direction * (swimSpeed * Time.deltaTime));
-        float newY = _initialY + Mathf.Sin(Time.time * swimFrequency) * swimHeight;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        if (_spline == null) return;
 
-        _timer -= Time.deltaTime;
-        if (_timer <= 0f)
+        // Move fish along the spline
+        _progress += swimSpeed * Time.deltaTime / _spline.GetLength(); // Normalize speed across spline length
+
+        if (_progress > 1f)
         {
-            ChangeDirection();
-            _timer = changeDirectionInterval;
+            _progress = loop ? 0f : 1f; // Loop or clamp progress
         }
 
-        _direction += new Vector2(Random.Range(-randomWanderAmount, randomWanderAmount), Random.Range(-randomWanderAmount, randomWanderAmount));
-        _direction.Normalize();
+        // Get the position and tangent from the spline
+        Vector3 currentPosition = _spline.EvaluatePosition(_progress);
+        Vector3 tangent = _spline.EvaluateTangent(_progress);
 
-        Vector2 position = transform.position;
-        if (position.x < -5 || position.x > 5 || position.y < -5 || position.y > 5)
-        {
-            _direction = -_direction;
-        }
+        // Move the fish to the new position along the spline
+        transform.position = currentPosition;
+
+        // Rotate the fish to face the direction of movement (using tangent)
+        Quaternion targetRotation = Quaternion.LookRotation(tangent);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        _previousPosition = currentPosition;
     }
 
-    private void ChangeDirection()
+    private void OnDrawGizmos()
     {
-        float angle = Random.Range(0f, 360f);
-        _direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        // Draw the spline path in the editor (optional)
+        if (_splineContainer == null || _splineContainer.Spline == null) return;
+        Gizmos.color = Color.cyan;
+        Spline spline = _splineContainer.Spline;
+        for (float t = 0; t < 1; t += 0.01f)
         {
-            Vector2 fleeDirection = (transform.position - other.transform.position).normalized;
-            _direction = fleeDirection;
+            Vector3 point = spline.EvaluatePosition(t);
+            Gizmos.DrawSphere(point, 0.05f);
         }
     }
 }
