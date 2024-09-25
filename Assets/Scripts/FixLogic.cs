@@ -9,6 +9,16 @@ public class FixLogic : MonoBehaviour
     public GameObject welderParticles;
     public Welder welder;
 
+    //por cada leak poner distintos: para sacar el circulo 1 del minimapa con sus particulas tenemos que fixear 2 leaks que van a tener un componente halo.
+    //el circulo 1 y la particula seran proveidas aca en variables publicas
+
+    //reglas:
+    //eliminadas 2 leaks con halos? -> eliminar circulo 0 del minimapa y particula
+    //eliminada 1 leak con wind zone? chau circulo 1 del minimapa y particula
+    //eliminada 2 leak con projector? chau circulo 2 del minimapa y particula
+    //eliminada 1 leak con lens flare? chau circulo 3 del minimapa y particula
+    //eliminada 1 leak con mask? chau circulo 4 del minimapa y particula
+
     private bool _isOverlapping;
     private GameObject _currentLeak;
     private bool _isFixing;
