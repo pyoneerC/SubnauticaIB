@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FixLogic : MonoBehaviour
 {
@@ -9,15 +10,17 @@ public class FixLogic : MonoBehaviour
     public GameObject welderParticles;
     public Welder welder;
 
-    //por cada leak poner distintos: para sacar el circulo 1 del minimapa con sus particulas tenemos que fixear 2 leaks que van a tener un componente halo.
-    //el circulo 1 y la particula seran proveidas aca en variables publicas
-
-    //reglas:
-    //eliminadas 2 leaks con halos? -> eliminar circulo 0 del minimapa y particula
-    //eliminada 1 leak con wind zone? chau circulo 1 del minimapa y particula
-    //eliminada 2 leak con projector? chau circulo 2 del minimapa y particula
-    //eliminada 1 leak con lens flare? chau circulo 3 del minimapa y particula
-    //eliminada 1 leak con mask? chau circulo 4 del minimapa y particula
+    // Minimap circles and particles
+    public GameObject circle0;
+    public GameObject particle0;
+    public GameObject circle1;
+    public GameObject particle1;
+    public GameObject circle2;
+    public GameObject particle2;
+    public GameObject circle3;
+    public GameObject particle3;
+    public GameObject circle4;
+    public GameObject particle4;
 
     private bool _isOverlapping;
     private GameObject _currentLeak;
@@ -83,22 +86,8 @@ public class FixLogic : MonoBehaviour
         }
 
         fixedCount++;
-        Debug.Log("Leak fixed! Total fixed leaks: " + fixedCount);
 
-        if (_currentLeak != null)
-        {
-            GameObject parent = _currentLeak.transform.parent.gameObject;
-
-            foreach (Transform child in parent.transform)
-            {
-                if (child != _currentLeak.transform)
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-
-            Destroy(_currentLeak);
-        }
+        HandleMinimapCirclesAndParticles();
 
         if (fixedCount >= 7)
         {
@@ -107,6 +96,58 @@ public class FixLogic : MonoBehaviour
 
         _isOverlapping = false;
         _isFixing = false;
+    }
+
+    private void HandleMinimapCirclesAndParticles()
+    {
+        bool hasHalo = _currentLeak.GetComponent("Halo");
+        bool hasWindZone = _currentLeak.GetComponent<WindZone>();
+        bool hasProjector = _currentLeak.GetComponent<Projector>();
+        bool hasLensFlare = _currentLeak.GetComponent<LensFlare>();
+        bool hasMask = _currentLeak.GetComponent<Mask>();
+
+        if (hasHalo)
+        {
+            if (fixedCount % 2 == 0)
+            {
+                circle0.SetActive(false);
+                particle0.SetActive(false);
+            }
+        }
+        else if (hasWindZone)
+        {
+            circle1.SetActive(false);
+            particle1.SetActive(false);
+        }
+        else if (hasProjector)
+        {
+            if (fixedCount % 2 == 0)
+            {
+                circle2.SetActive(false);
+                particle2.SetActive(false);
+            }
+        }
+        else if (hasLensFlare)
+        {
+            circle3.SetActive(false);
+            particle3.SetActive(false);
+        }
+        else if (hasMask)
+        {
+            circle4.SetActive(false);
+            particle4.SetActive(false);
+        }
+
+        var parent = _currentLeak.transform.parent.gameObject;
+        foreach (Transform child in parent.transform)
+        {
+            if (child != _currentLeak.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        Destroy(_currentLeak);
     }
 
     private static void GameOver()
