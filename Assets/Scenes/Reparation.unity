@@ -36661,7 +36661,7 @@ MonoBehaviour:
   swimSpeed: 3
   rotationSpeed: 5
   loop: 1
-  rotationOffset: {x: 0, y: -90, z: 0}
+  rotationOffset: {x: -90, y: -90, z: 0}
 --- !u!1001 &1654060551
 PrefabInstance:
   m_ObjectHideFlags: 0
