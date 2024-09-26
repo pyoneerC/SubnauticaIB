@@ -102,14 +102,12 @@ public class Endgame : MonoBehaviour
         if (isVictory)
         {
             _score = Random.Range(7, 11); // Random score between 7 and 10
-            endgameText.color = Color.green; // Change text color to green
             endgameText.text = "Felicidades!"; // Victory message
         }
         else
         {
             _score = 0; // No score for losing
             endgameText.text = "Perdiste!"; // Loss message
-            endgameText.color = Color.red; // Change text color to red
         }
 
         // Update the UI elements
@@ -118,6 +116,12 @@ public class Endgame : MonoBehaviour
         // Make the text visible
         SetTextVisibility(true);
         SetExplanationTextVisibility(1f);
+
+        endgameText.color = isVictory ? Color.green : // Change text color to green
+            Color.red; // Change text color to red
+
+        scoreText.color = isVictory ? Color.green : // Change text color to green
+            Color.red; // Change text color to red
     }
 
     private void UpdateUI()
