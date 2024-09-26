@@ -1578,6 +1578,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89375940}
   m_CullTransparentMesh: 1
+--- !u!1 &89894884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5609321221556402741, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+  m_PrefabInstance: {fileID: 1322784281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &89894885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89894884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df7a834c991ce4c966b3383d967636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splineObject: {fileID: 557190188}
+  swimSpeed: 10
+  rotationSpeed: 5
+  loop: 1
+  rotationOffset: {x: -90, y: -90, z: 0}
 --- !u!4 &91030160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: 6fec6d200fb25e04184d9b53e0e5c97e, type: 3}
@@ -5659,7 +5681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineObject: {fileID: 557190188}
-  swimSpeed: 3
+  swimSpeed: 2
   rotationSpeed: 5
   loop: 1
   rotationOffset: {x: -90, y: -90, z: 0}
@@ -18827,7 +18849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineObject: {fileID: 2098095641}
-  swimSpeed: 3
+  swimSpeed: 6
   rotationSpeed: 5
   loop: 1
   rotationOffset: {x: -90, y: -90, z: 0}
@@ -24120,7 +24142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineObject: {fileID: 2098095641}
-  swimSpeed: 3
+  swimSpeed: 5
   rotationSpeed: 5
   loop: 1
   rotationOffset: {x: -90, y: -90, z: 0}
@@ -24677,7 +24699,6 @@ MonoBehaviour:
   welderPrefab: {fileID: 1071434719}
   rayDistance: 100
   playerCamera: {fileID: 0}
-  welderInHand: 0
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
@@ -28424,6 +28445,66 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1698793, y: 0.8506505, z: 0.9873315}
   m_Center: {x: -0.58493966, y: 0.42532524, z: 0.49366575}
+--- !u!1001 &1322784281
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -5609321221556402741, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_Name
+      value: red_sea_bream_anil (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -56.37027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5360383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5360383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.46115398
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.46115398
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146681718063874739, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -81.411
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -5609321221556402741, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 89894885}
+  m_SourcePrefab: {fileID: 9199261849990390558, guid: 68d2193429e8c1949974d064edcaafc5, type: 3}
 --- !u!4 &1323115324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: 454dd80ab25e2bf42be2cf0f77ffdbc1, type: 3}
@@ -44572,7 +44653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineObject: {fileID: 2098095641}
-  swimSpeed: 3
+  swimSpeed: 8
   rotationSpeed: 5
   loop: 1
   rotationOffset: {x: -90, y: -90, z: 0}
@@ -48064,7 +48145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splineObject: {fileID: 1964668403}
-  swimSpeed: 3
+  swimSpeed: 10
   rotationSpeed: 5
   loop: 1
   rotationOffset: {x: -90, y: -90, z: 0}
@@ -48308,6 +48389,7 @@ SceneRoots:
   - {fileID: 1651626492}
   - {fileID: 398061961}
   - {fileID: 232265465}
+  - {fileID: 1322784281}
   - {fileID: 1538279326}
   - {fileID: 1152718636}
   - {fileID: 1009937886}
