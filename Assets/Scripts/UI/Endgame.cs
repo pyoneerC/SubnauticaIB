@@ -106,6 +106,8 @@ public class Endgame : MonoBehaviour
 
         UpdateUI();
 
+        DisablePlayerInput();
+
         SetTextVisibility(true);
         SetExplanationTextVisibility(1f);
 
@@ -125,6 +127,17 @@ public class Endgame : MonoBehaviour
         healthCountExplanation.gameObject.SetActive(false);
     }
 
+    private void DisablePlayerInput()
+    {
+        var player = GameObject.FindWithTag("Player");
+
+        if (player == null) return;
+
+        var playerMovement = player.GetComponent<FirstPersonController>();
+        playerMovement.enabled = false;
+    }
+
+
     private void UpdateUI()
     {
         scoreText.text = $"{_score}";
@@ -138,7 +151,7 @@ public class Endgame : MonoBehaviour
 
         restartButton.interactable = true;
         quitButton.interactable = true;
-        
+
         restartButton.onClick.AddListener(() => { UnityEngine.SceneManagement.SceneManager.LoadScene(0); });
         quitButton.onClick.AddListener(Application.Quit);
     }
