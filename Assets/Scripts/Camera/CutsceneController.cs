@@ -137,4 +137,9 @@ public class CutsceneController : MonoBehaviour
             enabled = false;
         }
     }
+
+    public void PauseUnpause()
+    {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    }
 }
