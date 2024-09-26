@@ -17908,6 +17908,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1128651459}
+    - targetCorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1128651460}
     - targetCorrespondingSourceObject: {fileID: 4459864851310106424, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 848670200}
@@ -24721,6 +24724,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineParent: {fileID: 2055782988}
   speed: 0.1
+--- !u!114 &1128651460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635657467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd46298c8b3a9f4d89244b0c898a0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackScreen: {fileID: 0}
+  fadeDuration: 1
+  scoreExplanationText: {fileID: 89375942}
+  scoreExplanationTextOutOfTen: {fileID: 754738739}
+  timePlayedTextExplanation: {fileID: 886493360}
+  timePerPipeTextExplanation: {fileID: 1690474344}
+  oxygenWarningsAmountTextExplanation: {fileID: 15224276}
+  distanceCoveredTextExplanation: {fileID: 1391624099}
+  endgameText: {fileID: 707323441}
+  scoreText: {fileID: 550523078}
+  timePlayedText: {fileID: 1236696014}
+  timePerPipeText: {fileID: 2014754360}
+  oxygenWarningsAmountText: {fileID: 474630863}
+  distanceCoveredText: {fileID: 16681213}
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
