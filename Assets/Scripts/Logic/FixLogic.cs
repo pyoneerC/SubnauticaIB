@@ -62,7 +62,7 @@ public class FixLogic : MonoBehaviour
 
     private void Update()
     {
-        if (welder != null && !welder.welderInHand)
+        if (welder != null && !welder.WelderInHand)
         {
             Debug.Log("Welder not in hand. Cannot fix leaks.");
             return;
