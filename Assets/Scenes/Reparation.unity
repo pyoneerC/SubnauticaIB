@@ -9747,15 +9747,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.205198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.15306
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -51.334007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9763,7 +9763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -9838,6 +9838,7 @@ MonoBehaviour:
   swimSpeed: 3
   rotationSpeed: 5
   loop: 1
+  rotationOffset: {x: 0, y: -90, z: 0}
 --- !u!4 &509367958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5146681718063874739, guid: 0cd2fb479650c304eac7efd1ad26408e, type: 3}

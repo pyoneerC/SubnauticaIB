@@ -13,7 +13,9 @@ public class Fish : MonoBehaviour
     private float _progress; // Progress along the spline (0 to 1)
     private SplineContainer _splineContainer;
     private Spline _spline;
-    private Vector3 _previousPosition;
+
+    // Offset to correct fish orientation
+    public Vector3 rotationOffset = new Vector3(0f, -90f, 0f); // 90-degree Y-axis offset to face spline direction correctly
 
     private void Start()
     {
@@ -35,7 +37,6 @@ public class Fish : MonoBehaviour
 
         // Get the spline from the container
         _spline = _splineContainer.Spline;
-        _previousPosition = transform.position;
     }
 
     private void Update()
@@ -50,18 +51,21 @@ public class Fish : MonoBehaviour
             _progress = loop ? 0f : 1f; // Loop or clamp progress
         }
 
-        // Get the position and tangent from the spline
+        // Get the global position and tangent from the spline
         Vector3 currentPosition = _spline.EvaluatePosition(_progress);
         Vector3 tangent = _spline.EvaluateTangent(_progress);
 
-        // Move the fish to the new position along the spline
+        // Move the fish to the global spline position
         transform.position = currentPosition;
 
         // Rotate the fish to face the direction of movement (using tangent)
         Quaternion targetRotation = Quaternion.LookRotation(tangent);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-        _previousPosition = currentPosition;
+        // Apply additional rotation offset to adjust the fish's orientation
+        targetRotation *= Quaternion.Euler(rotationOffset);
+
+        // Smoothly rotate the fish to the target rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
