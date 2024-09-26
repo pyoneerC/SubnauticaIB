@@ -19,6 +19,8 @@ public class Endgame : MonoBehaviour
     public TextMeshProUGUI oxygenWarningsAmountText; // Number of times an oxygen warning was triggered
     public TextMeshProUGUI distanceCoveredText; // Distance covered as the sum of all 3 components (x, y, z)
     public Image reticle;
+    public Button restartButton;
+    public Button quitButton;
 
     private Health _health; // Reference to player health
     private FixLogic _fixLogic; // Reference to the fixing logic
@@ -53,6 +55,14 @@ public class Endgame : MonoBehaviour
 
         // Initialize the text elements to be transparent (not visible)
         SetTextVisibility(false);
+
+        //hide buttons
+        restartButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
+        
+        //bind buttons
+        restartButton.onClick.AddListener(() => { UnityEngine.SceneManagement.SceneManager.LoadScene(0); });
+        quitButton.onClick.AddListener(Application.Quit);
 
         // Start time tracking
         _timePlayed = Time.time;
@@ -92,8 +102,8 @@ public class Endgame : MonoBehaviour
         if (isVictory)
         {
             _score = Random.Range(7, 11); // Random score between 7 and 10
-            endgameText.text = "Felicidades!"; // Victory message
             endgameText.color = Color.green; // Change text color to green
+            endgameText.text = "Felicidades!"; // Victory message
         }
         else
         {
@@ -117,6 +127,10 @@ public class Endgame : MonoBehaviour
         timePerPipeText.text = $"{_timePlayed / 7:F2} s";
         oxygenWarningsAmountText.text = $"{_oxygenAlertsCount}";
         distanceCoveredText.text = $"{Vector3.Distance(_startPosition, _playerTransform.position):F2} m";
+
+        // Show buttons
+        restartButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
 
     private void SetTextVisibility(bool visible)
