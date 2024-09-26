@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Endgame : MonoBehaviour
 {
-    // Variables for UI elements
     public TextMeshProUGUI scoreExplanationText;
     public TextMeshProUGUI scoreExplanationTextOutOfTen;
     public TextMeshProUGUI timePlayedTextExplanation;
@@ -12,31 +11,42 @@ public class Endgame : MonoBehaviour
     public TextMeshProUGUI oxygenWarningsAmountTextExplanation;
     public TextMeshProUGUI distanceCoveredTextExplanation;
 
-    public TextMeshProUGUI endgameText; // Victory or Loss text
-    public TextMeshProUGUI scoreText; // 0 if player loses, random score 7 to 10 if wins
-    public TextMeshProUGUI timePlayedText; // Time played
-    public TextMeshProUGUI timePerPipeText; // Time played divided by 7
-    public TextMeshProUGUI oxygenWarningsAmountText; // Number of times an oxygen warning was triggered
-    public TextMeshProUGUI distanceCoveredText; // Distance covered as the sum of all 3 components (x, y, z)
+    public TextMeshProUGUI endgameText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timePlayedText;
+    public TextMeshProUGUI timePerPipeText;
+    public TextMeshProUGUI oxygenWarningsAmountText;
+    public TextMeshProUGUI distanceCoveredText;
     public Image reticle;
     public Button restartButton;
     public Button quitButton;
 
-    private Health _health; // Reference to player health
-    private FixLogic _fixLogic; // Reference to the fixing logic
-    private WaterLogic _waterLogic; // Reference to the water logic
-    private Transform _playerTransform; // Player's transform (captured automatically from prefab)
+    public Image googlesSupportA;
+    public Image googlesSupportB;
+    public Image googles;
 
-    private int _score; // Final score for winning
-    private float _timePlayed; // Total time played
-    private bool _gameEnded; // Check if the game has ended
-    private int _oxygenAlertsCount; // Oxygen alerts triggered
+    public Image minimap;
+    public TextMeshProUGUI oxygenCount;
+    public TextMeshProUGUI oxygenCountExplanation;
+    public TextMeshProUGUI heightCount;
+    public TextMeshProUGUI heightCountExplanation;
+    public TextMeshProUGUI healthCount;
+    public TextMeshProUGUI healthCountExplanation;
 
-    private Vector3 _startPosition; // Start position of the player
+    private Health _health;
+    private FixLogic _fixLogic;
+    private WaterLogic _waterLogic;
+    private Transform _playerTransform;
+
+    private int _score;
+    private float _timePlayed;
+    private bool _gameEnded;
+    private int _oxygenAlertsCount;
+
+    private Vector3 _startPosition;
 
     private void Start()
     {
-        // Get player transform from prefab
         _playerTransform = GameObject.FindWithTag("Player").transform;
 
         if (_playerTransform == null)
@@ -45,29 +55,22 @@ public class Endgame : MonoBehaviour
             return;
         }
 
-        // Initialize references
         _health = FindObjectOfType<Health>();
         _fixLogic = FindObjectOfType<FixLogic>();
         _waterLogic = FindObjectOfType<WaterLogic>();
 
-        // Capture player's starting position
         _startPosition = _playerTransform.position;
 
-        // Initialize the text elements to be transparent (not visible)
         SetTextVisibility(false);
 
-        //hide buttons
         restartButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
-        
-        //bind buttons
+
         restartButton.onClick.AddListener(() => { UnityEngine.SceneManagement.SceneManager.LoadScene(0); });
         quitButton.onClick.AddListener(Application.Quit);
 
-        // Start time tracking
         _timePlayed = Time.time;
 
-        // Initialize explanation texts to be invisible
         SetExplanationTextVisibility(0);
     }
 
@@ -87,41 +90,42 @@ public class Endgame : MonoBehaviour
 
     private void EndGame(bool isVictory)
     {
-        _gameEnded = true; // Stop further updates
-        reticle.enabled = false; // Hide the reticle
+        _gameEnded = true;
+        reticle.enabled = false;
 
-        // Calculate total time played
-        _timePlayed = Time.time - _timePlayed; // Time since the game started
-        _oxygenAlertsCount = _waterLogic.oxygenAlertsCount; // Adjusted to use the correct instance
+        _timePlayed = Time.time - _timePlayed;
+        _oxygenAlertsCount = _waterLogic.oxygenAlertsCount;
 
-        // Calculate distance covered using player's current position
-        Vector3 endPosition = _playerTransform.position;
-        float distanceCovered = Vector3.Distance(_startPosition, endPosition);
-
-        // Calculate the score if the player wins
         if (isVictory)
         {
-            _score = Random.Range(7, 11); // Random score between 7 and 10
-            endgameText.text = "Felicidades!"; // Victory message
+            _score = Random.Range(7, 11);
+            endgameText.text = "Felicidades!";
         }
         else
         {
-            _score = 0; // No score for losing
-            endgameText.text = "Perdiste!"; // Loss message
+            _score = 0;
+            endgameText.text = "Perdiste!";
         }
 
-        // Update the UI elements
         UpdateUI();
 
-        // Make the text visible
         SetTextVisibility(true);
         SetExplanationTextVisibility(1f);
 
-        endgameText.color = isVictory ? Color.green : // Change text color to green
-            Color.red; // Change text color to red
+        endgameText.color = isVictory ? Color.green : Color.red;
+        scoreText.color = isVictory ? Color.green : Color.red;
 
-        scoreText.color = isVictory ? Color.green : // Change text color to green
-            Color.red; // Change text color to red
+        googlesSupportA.gameObject.SetActive(false);
+        googlesSupportB.gameObject.SetActive(false);
+        googles.gameObject.SetActive(false);
+
+        minimap.gameObject.SetActive(false);
+        oxygenCount.gameObject.SetActive(false);
+        oxygenCountExplanation.gameObject.SetActive(false);
+        heightCount.gameObject.SetActive(false);
+        heightCountExplanation.gameObject.SetActive(false);
+        healthCount.gameObject.SetActive(false);
+        healthCountExplanation.gameObject.SetActive(false);
     }
 
     private void UpdateUI()
@@ -132,14 +136,13 @@ public class Endgame : MonoBehaviour
         oxygenWarningsAmountText.text = $"{_oxygenAlertsCount}";
         distanceCoveredText.text = $"{Vector3.Distance(_startPosition, _playerTransform.position):F2} m";
 
-        // Show buttons
         restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
     }
 
     private void SetTextVisibility(bool visible)
     {
-        Color color = visible ? Color.white : new Color(1, 1, 1, 0); // White or Transparent
+        Color color = visible ? Color.white : new Color(1, 1, 1, 0);
         endgameText.color = color;
         scoreText.color = color;
         timePlayedText.color = color;
@@ -150,7 +153,7 @@ public class Endgame : MonoBehaviour
 
     private void SetExplanationTextVisibility(float alpha)
     {
-        Color color = new Color(1, 1, 1, alpha); // Set alpha for explanation texts
+        Color color = new Color(1, 1, 1, alpha);
         scoreExplanationText.color = color;
         scoreExplanationTextOutOfTen.color = color;
         timePlayedTextExplanation.color = color;

@@ -24751,6 +24751,16 @@ MonoBehaviour:
   reticle: {fileID: 1374808373}
   restartButton: {fileID: 1480355432}
   quitButton: {fileID: 931267296}
+  googlesSupportA: {fileID: 1589523900}
+  googlesSupportB: {fileID: 114400261}
+  googles: {fileID: 1979774045}
+  minimap: {fileID: 1521861653}
+  oxygenCount: {fileID: 353184058}
+  oxygenCountExplanation: {fileID: 483585573}
+  heightCount: {fileID: 598384038}
+  heightCountExplanation: {fileID: 1208940814}
+  healthCount: {fileID: 1578620231}
+  healthCountExplanation: {fileID: 1096392008}
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
