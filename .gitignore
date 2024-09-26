@@ -38,6 +38,10 @@ Desktop.ini
 .vs/
 *.code-workspace
 
+# Ignore temporaries from GameCI
+/[Aa]rtifacts/
+/[Cc]odeCoverage/
+
 # Rider
 .idea/
 *.sln.iml
