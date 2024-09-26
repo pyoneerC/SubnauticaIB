@@ -66,9 +66,6 @@ public class Endgame : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
 
-        restartButton.onClick.AddListener(() => { UnityEngine.SceneManagement.SceneManager.LoadScene(0); });
-        quitButton.onClick.AddListener(Application.Quit);
-
         _timePlayed = Time.time;
 
         SetExplanationTextVisibility(0);
@@ -138,6 +135,12 @@ public class Endgame : MonoBehaviour
 
         restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
+
+        restartButton.interactable = true;
+        quitButton.interactable = true;
+        
+        restartButton.onClick.AddListener(() => { UnityEngine.SceneManagement.SceneManager.LoadScene(0); });
+        quitButton.onClick.AddListener(Application.Quit);
     }
 
     private void SetTextVisibility(bool visible)
