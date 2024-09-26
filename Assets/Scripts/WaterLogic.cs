@@ -18,8 +18,13 @@ public class WaterLogic : MonoBehaviour
     public AudioClip oxygenWarning1;
     public AudioClip oxygenWarning2;
     public AudioClip oxygenWarning3;
+
     public Image blackFadeImage;
     public Image minimap;
+    public Image googlesSupportA;
+    public Image googlesSupportB;
+    public Image googles;
+
     public TextMeshProUGUI oxygenWarningText;
     public AudioClip enterWaterSound;
 
@@ -42,6 +47,9 @@ public class WaterLogic : MonoBehaviour
         blackFadeImage.color = new Color(0f, 0f, 0f, 0f);
         _audioSource.volume = 1.0f;
         minimap.color = new Color(minimap.color.r, minimap.color.g, minimap.color.b, 1f);
+        googlesSupportA.color = new Color(googlesSupportA.color.r, googlesSupportA.color.g, googlesSupportA.color.b, 0f);
+        googlesSupportB.color = new Color(googlesSupportB.color.r, googlesSupportB.color.g, googlesSupportB.color.b, 0f);
+        googles.color = new Color(googles.color.r, googles.color.g, googles.color.b, 0f);
     }
 
     private void Update()
@@ -72,6 +80,37 @@ public class WaterLogic : MonoBehaviour
         }
 
         _oxygenDecrementCoroutine = StartCoroutine(OxygenDecrement());
+
+        StartCoroutine(FadeInGoogles());
+    }
+
+    private IEnumerator FadeInGoogles()
+    {
+        var googlesSupportColor = new Color(0.180f, 0.180f, 0.180f, 0);
+        var googlesColor = new Color(0f, 0f, 0f, 0f);
+
+        const float duration = 2f;
+        var timeElapsed = 0f;
+
+        googlesSupportA.color = googlesSupportColor;
+        googlesSupportB.color = googlesSupportColor;
+        googles.color = googlesColor;
+
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+            var alpha = Mathf.Clamp01(timeElapsed / duration);
+
+            googlesSupportA.color = new Color(0.180f, 0.180f, 0.180f, alpha);
+            googlesSupportB.color = new Color(0.180f, 0.180f, 0.180f, alpha);
+            googles.color = new Color(0f, 0f, 0f, Mathf.Lerp(0f, 0.4f, alpha));
+
+            yield return null;
+        }
+
+        googlesSupportA.color = new Color(0.180f, 0.180f, 0.180f, 1f);
+        googlesSupportB.color = new Color(0.180f, 0.180f, 0.180f, 1f);
+        googles.color = new Color(0f, 0f, 0f, 0.4f);
     }
 
     private void OnTriggerExit(Collider other)

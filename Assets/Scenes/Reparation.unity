@@ -2956,7 +2956,7 @@ GameObject:
   - component: {fileID: 173644482}
   - component: {fileID: 173644481}
   m_Layer: 0
-  m_Name: West (1)
+  m_Name: East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8901,7 +8901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479826998
@@ -17058,6 +17058,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: googles
+      value: 
+      objectReference: {fileID: 1979774045}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: minimap
       value: 
       objectReference: {fileID: 1521861653}
@@ -17097,6 +17101,14 @@ PrefabInstance:
       propertyPath: enterWaterSound
       value: 
       objectReference: {fileID: 8300000, guid: 335961129c6c5454a8de1c786544d148, type: 3}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: googlesSupportA
+      value: 
+      objectReference: {fileID: 1589523900}
+    - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: googlesSupportB
+      value: 
+      objectReference: {fileID: 114400261}
     - target: {fileID: 1285577524151521393, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: playerRigidbody
       value: 
@@ -34691,14 +34703,14 @@ RectTransform:
   m_GameObject: {fileID: 1589523898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7325, y: 1, z: 1}
+  m_LocalScale: {x: 1.89115, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1773052968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -884.4434, y: 0}
+  m_AnchoredPosition: {x: -877.9876, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1589523900
@@ -42351,7 +42363,7 @@ GameObject:
   - component: {fileID: 1979774045}
   - component: {fileID: 1979774047}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Googles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42373,7 +42385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.6549353, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979774045
