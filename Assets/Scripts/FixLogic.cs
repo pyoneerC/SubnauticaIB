@@ -9,6 +9,7 @@ public class FixLogic : MonoBehaviour
     public AudioClip weldingSound;
     public GameObject welderParticles;
     public Welder welder;
+    public GameObject welderPrefab;
 
     // Minimap circles and particles
     public GameObject circle0;
@@ -46,7 +47,7 @@ public class FixLogic : MonoBehaviour
         if (!other.CompareTag("Leak")) return;
         _isOverlapping = true;
         _currentLeak = other.gameObject;
-        Debug.Log("Overlapping with leak. Hold 'F' to fix.");
+        StartCoroutine(RotateWelder());
     }
 
     private void OnTriggerExit(Collider other)
@@ -87,6 +88,8 @@ public class FixLogic : MonoBehaviour
             yield return null;
         }
 
+        StartCoroutine(RotateWelder());
+
         if (!_isOverlapping || _currentLeak == null)
         {
             Debug.Log("No longer overlapping with leak. Fix aborted.");
@@ -106,6 +109,8 @@ public class FixLogic : MonoBehaviour
 
         _isOverlapping = false;
         _isFixing = false;
+
+        StartCoroutine(RotateWelder());
     }
 
     private void HandleMinimapCirclesAndParticles()
@@ -168,5 +173,26 @@ public class FixLogic : MonoBehaviour
     private static void GameOver()
     {
         Debug.Log("Game Over! You fixed 7 leaks.");
+    }
+
+    private IEnumerator RotateWelder()
+    {
+        var originalRotation = welderPrefab.transform.rotation;
+        var targetRotation = originalRotation * Quaternion.Euler(10f, 10f, 0f);
+
+        const float rotateDuration = 0.5f;
+        for (float t = 0; t < rotateDuration; t += Time.deltaTime)
+        {
+            welderPrefab.transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, t / rotateDuration);
+            yield return null;
+        }
+        welderPrefab.transform.rotation = targetRotation;
+
+        for (float t = 0; t < rotateDuration; t += Time.deltaTime)
+        {
+            welderPrefab.transform.rotation = Quaternion.Lerp(targetRotation, originalRotation, t / rotateDuration);
+            yield return null;
+        }
+        welderPrefab.transform.rotation = originalRotation;
     }
 }
