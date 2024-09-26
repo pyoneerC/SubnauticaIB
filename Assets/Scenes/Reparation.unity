@@ -2550,7 +2550,7 @@ PrefabInstance:
       objectReference: {fileID: 1475119614}
     - target: {fileID: 114769781544105922, guid: 5eefba205a58c8c4a937c97b87c185a3, type: 3}
       propertyPath: barValue
-      value: 86.2
+      value: 46.4
       objectReference: {fileID: 0}
     - target: {fileID: 114769781544105922, guid: 5eefba205a58c8c4a937c97b87c185a3, type: 3}
       propertyPath: m_Enabled
@@ -17905,6 +17905,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1128651451}
+    - targetCorrespondingSourceObject: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1128651459}
     - targetCorrespondingSourceObject: {fileID: 4459864851310106424, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 848670200}
@@ -17958,6 +17961,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!20 &848670201 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4459864851310106426, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 848670198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &849679832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24698,7 +24706,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   welderPrefab: {fileID: 1071434719}
   rayDistance: 100
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 848670201}
+--- !u!114 &1128651459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635657467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a01d43f8d9f455193df9fb30c944807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splineParent: {fileID: 2055782988}
+  speed: 0.1
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
@@ -32515,7 +32537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fixing... (86%)
+  m_text: Fixing... (46%)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33171,6 +33193,7 @@ Transform:
   - {fileID: 557190189}
   - {fileID: 1964668404}
   - {fileID: 2098095642}
+  - {fileID: 2055782988}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497520578
@@ -45694,6 +45717,158 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 9199261849990390558, guid: 95d3d6bd77177bd4b978473257fc8079, type: 3}
+--- !u!1 &2055782987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055782988}
+  - component: {fileID: 2055782989}
+  m_Layer: 0
+  m_Name: Camera Cutscene Spline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055782988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055782987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.1365824, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1495273419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055782989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055782987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spline:
+    m_EditModeType: 1
+    m_Knots: []
+    m_MetaData: []
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Splines:
+  - m_EditModeType: 1
+    m_Knots:
+    - Position:
+        x: 43.720047
+        y: -18.72
+        z: -79.8086
+      TangentIn:
+        x: 0
+        y: 0
+        z: -24.665
+      TangentOut:
+        x: 0
+        y: 0
+        z: 24.665
+      Rotation:
+        value:
+          x: 0
+          y: -0.3112445
+          z: -0
+          w: 0.95032984
+    - Position:
+        x: 14.590047
+        y: -20
+        z: 13.361394
+      TangentIn:
+        x: 0
+        y: 0
+        z: -16.995
+      TangentOut:
+        x: 0
+        y: 0
+        z: 16.995
+      Rotation:
+        value:
+          x: 0
+          y: 0.87226963
+          z: 0
+          w: -0.48902518
+    - Position:
+        x: -32.409954
+        y: -38.78
+        z: -23.638607
+      TangentIn:
+        x: 0
+        y: 0
+        z: -7.6307874
+      TangentOut:
+        x: 0
+        y: 0
+        z: 7.6307874
+      Rotation:
+        value:
+          x: 0
+          y: 0.965639
+          z: 0
+          w: -0.25988716
+    - Position:
+        x: -50.409954
+        y: -34.1
+        z: -92.6386
+      TangentIn:
+        x: 0
+        y: 0
+        z: -22.576
+      TangentOut:
+        x: 0
+        y: 0
+        z: 22.576
+      Rotation:
+        value:
+          x: 0
+          y: 0.9727732
+          z: 0
+          w: 0.23175892
+    m_MetaData:
+    - Mode: 2
+      Tension: 0.5
+    - Mode: 2
+      Tension: 0.5
+    - Mode: 2
+      Tension: 0.5
+    - Mode: 2
+      Tension: 0.5
+    m_Closed: 1
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Knots:
+    m_KnotsLink: []
 --- !u!1001 &2056055168
 PrefabInstance:
   m_ObjectHideFlags: 0

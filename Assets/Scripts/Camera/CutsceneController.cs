@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Splines;
 
 /// <summary>
 /// Manages the cutscene sequence by controlling the cutscene camera's movement
@@ -7,89 +8,53 @@
 /// </summary>
 public class CutsceneController : MonoBehaviour
 {
-    /// <summary>
-    /// The camera used for the cutscene.
-    /// </summary>
-    public Camera cutsceneCamera;
+    private Camera playerCamera; // Regular gameplay camera
+    public Transform splineParent; // The parent GameObject that controls the spline path
+    public float speed = 1.0f; // Speed at which the cutscene camera follows the spline
 
-    /// <summary>
-    /// The camera used for regular gameplay.
-    /// </summary>
-    public Camera playerCamera;
+    private Camera cutsceneCamera; // Camera for the cutscene
+    private SplineContainer splineContainer; // Reference to the spline
+    private float duration = 8.0f; // Duration of the cutscene
+    private float elapsedTime = 0f; // Time elapsed since the start of the cutscene
 
-    /// <summary>
-    /// The parent GameObject that controls the spline path for the cutscene.
-    /// </summary>
-    public Transform splineParent;
-
-    /// <summary>
-    /// The speed at which the cutscene camera follows the spline.
-    /// </summary>
-    public float speed = 1.0f;
-
-    /// <summary>
-    /// Duration of the cutscene in seconds.
-    /// </summary>
-    private float duration = 6.0f;
-
-    /// <summary>
-    /// Time elapsed since the start of the cutscene.
-    /// </summary>
-    private float elapsedTime = 0f;
-
-    /// <summary>
-    /// Starting position of the cutscene camera.
-    /// </summary>
-    private Vector3 startPosition;
-
-    /// <summary>
-    /// Target position for the cutscene camera to move towards.
-    /// </summary>
-    private Vector3 targetPosition;
-
-    /// <summary>
-    /// Initializes the cutscene by setting the appropriate cameras and calculating
-    /// the target position along the spline.
-    /// </summary>
-    void Start()
+    private void Start()
     {
-        // Disable the player camera and enable the cutscene camera to start the cutscene
-        playerCamera.gameObject.SetActive(false);
+        playerCamera = Camera.main;
+        cutsceneCamera = new GameObject("Cutscene Camera").AddComponent<Camera>();
         cutsceneCamera.gameObject.SetActive(true);
+        playerCamera.gameObject.SetActive(false);
 
-        // Store the initial position of the cutscene camera
-        startPosition = cutsceneCamera.transform.position;
-
-        // Set the target position to the position of the spline parent
-        targetPosition = splineParent.position; // Modify this to follow a specific point on your spline if needed
+        splineContainer = splineParent.GetComponent<SplineContainer>();
+        if (splineContainer != null) return;
+        Debug.LogError("No SplineContainer found on the spline parent.");
+        return;
     }
 
-    /// <summary>
-    /// Updates the cutscene camera's position over time, and switches back to the
-    /// player camera once the cutscene duration is reached.
-    /// </summary>
-    void Update()
+    private void Update()
     {
-        // Accumulate the time elapsed since the start of the cutscene
         elapsedTime += Time.deltaTime;
 
-        // Move the cutscene camera along the spline until the duration is reached
         if (elapsedTime < duration)
         {
-            // Calculate the interpolation factor (t) based on elapsed time
-            float t = elapsedTime / duration;
+            // Normalize the elapsed time to a 0-1 range
+            float normalizedTime = elapsedTime / duration;
 
-            // Move the camera towards the target position using linear interpolation
-            cutsceneCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            // Get normalized progress along the spline (from 0 to 1)
+            float splineProgress = normalizedTime;
+
+            // Move the camera along the spline based on progress
+            Vector3 targetPosition = splineContainer.EvaluatePosition(splineProgress);
+            Vector3 targetDirection = splineContainer.EvaluateTangent(splineProgress);
+
+            // Set camera position and rotation along the spline
+            cutsceneCamera.transform.position = targetPosition;
+            cutsceneCamera.transform.rotation = Quaternion.LookRotation(targetDirection);
         }
         else
         {
-            // Once the cutscene duration has elapsed, destroy the cutscene camera
-            // and re-enable the player camera
-            Destroy(cutsceneCamera.gameObject);
+            // After cutscene duration, switch back to the player camera
             playerCamera.gameObject.SetActive(true);
-
-            // Disable this script to prevent further updates
+            Destroy(cutsceneCamera.gameObject);
             enabled = false;
         }
     }

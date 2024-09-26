@@ -413,7 +413,7 @@ public class FirstPersonController : MonoBehaviour
 
                 if (hideBarWhenFull && Mathf.Approximately(_sprintRemaining, sprintDuration))
                 {
-                    _sprintBarCg.alpha -= 3 * Time.deltaTime;
+                    //_sprintBarCg.alpha -= 3 * Time.deltaTime;
                 }
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
