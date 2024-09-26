@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class WaterLogic : MonoBehaviour
 {
-    [FormerlySerializedAs("max_oxygen")] public int maxOxygen = 45;
-    [FormerlySerializedAs("current_oxygen")] public int currentOxygen;
+    public int maxOxygen = 45;
+    [Range(0, 50)]
+    public int currentOxygen;
 
     public Rigidbody playerRigidbody;
     public float waterGravityScale = 0.5f;
@@ -34,6 +35,7 @@ public class WaterLogic : MonoBehaviour
     private float _previousWaitTime;
     private bool _isUnderwater;
     private bool _isFadingIn;
+    public int oxygenAlertsCount;
 
     private bool _hasPlayedWarning1;
     private bool _hasPlayedWarning2;
@@ -149,6 +151,7 @@ public class WaterLogic : MonoBehaviour
                     StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning3);
                     _hasPlayedWarning3 = true;
+                    oxygenAlertsCount++;
                     StartCoroutine(FadeInBlackCanvas());
                     break;
                 case <= 15 when !_hasPlayedWarning2:
@@ -157,6 +160,7 @@ public class WaterLogic : MonoBehaviour
                     StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning2);
                     _hasPlayedWarning2 = true;
+                    oxygenAlertsCount++;
                     break;
                 case <= 30 when !_hasPlayedWarning1:
                     oxygenWarningText.text = "¡Oxígeno agotándose! ¡Conseguí un poco de oxígeno!";
@@ -164,6 +168,7 @@ public class WaterLogic : MonoBehaviour
                     StartCoroutine(FadeTextAlpha(oxygenWarningText, 1f, 0f, 6f));
                     _audioSource.PlayOneShot(oxygenWarning1);
                     _hasPlayedWarning1 = true;
+                    oxygenAlertsCount++;
                     break;
             }
 

@@ -14294,7 +14294,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 300}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707323441
 MonoBehaviour:
@@ -14316,7 +14316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fallaste!
+  m_text: Felicidades!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24736,8 +24736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd46298c8b3a9f4d89244b0c898a0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackScreen: {fileID: 0}
-  fadeDuration: 1
   scoreExplanationText: {fileID: 89375942}
   scoreExplanationTextOutOfTen: {fileID: 754738739}
   timePlayedTextExplanation: {fileID: 886493360}
@@ -24750,6 +24748,7 @@ MonoBehaviour:
   timePerPipeText: {fileID: 2014754360}
   oxygenWarningsAmountText: {fileID: 474630863}
   distanceCoveredText: {fileID: 16681213}
+  reticle: {fileID: 1374808373}
 --- !u!4 &1130256303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5819118886272102141, guid: e0f672a015f8fee418afd70dfd718f0d, type: 3}
@@ -29833,6 +29832,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372892350}
   m_CullTransparentMesh: 1
+--- !u!114 &1374808373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459864850190357395, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 848670198}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1376932302
 PrefabInstance:
   m_ObjectHideFlags: 0

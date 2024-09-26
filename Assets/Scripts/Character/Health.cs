@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     /// The player's current health value.
     /// </summary>
     [Tooltip("The player's health.")]
+    [Range(0,100)]
     public float health = 100f;
 
     /// <summary>
