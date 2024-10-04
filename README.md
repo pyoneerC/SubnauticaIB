@@ -55,3 +55,12 @@ Archivo Original:
 `Es obligatorio utilizar todo el equipo, ya que de lo contrario no cumpliría con las normas de seguridad del trabajo.`
 
 > EPP es elementos de protección personal.
+
+
+## Gallery
+
+![preparation](https://github.com/user-attachments/assets/47f9b042-f4f9-466c-b3ec-e82ecf1142a2)
+![preparation2](https://github.com/user-attachments/assets/55643195-8efd-490b-bbc0-fe283222e217)
+
+![reparation](https://github.com/user-attachments/assets/19779634-8189-4c0f-a81b-e21cc555cc9b)
+![sea](https://github.com/user-attachments/assets/8da69d0c-30db-435d-bb74-7550f3eb49e7)
